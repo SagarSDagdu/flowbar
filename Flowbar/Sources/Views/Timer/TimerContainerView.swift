@@ -14,11 +14,13 @@ struct TimerContainerView: View {
                 .frame(maxWidth: .infinity)
 
             if timerService.todosVisible {
-                TodosPanelDivider()
-                TimerTodosView()
-                    .accessibilityIdentifier("timer-todos-view")
-                    .frame(width: CGFloat(appState.sidebar.todosPanelWidth))
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                HStack(spacing: 0) {
+                    TodosPanelDivider()
+                    TimerTodosView()
+                        .accessibilityIdentifier("timer-todos-view")
+                        .frame(width: CGFloat(appState.sidebar.todosPanelWidth))
+                }
+                .transition(.move(edge: .trailing).combined(with: .opacity))
             }
         }
         .animation(.easeInOut(duration: 0.2), value: timerService.todosVisible)
