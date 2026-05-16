@@ -125,15 +125,21 @@ struct TimerHomeView: View {
             Text("No timer running")
                 .font(.system(size: 15))
                 .foregroundStyle(.secondary)
-            Button {
-                timerService.screen = .todos
-            } label: {
-                Text("Start from the todos list")
+            if !timerService.todosVisible {
+                Button {
+                    timerService.todosVisible = true
+                } label: {
+                    Text("Open the todos list to start")
+                        .font(.system(size: 12))
+                        .foregroundStyle(appState.settings.accent)
+                }
+                .buttonStyle(.plain)
+                .accessibilityIdentifier("timer-open-todos")
+            } else {
+                Text("Pick a todo from the list →")
                     .font(.system(size: 12))
-                    .foregroundStyle(appState.settings.accent)
+                    .foregroundStyle(.tertiary)
             }
-            .buttonStyle(.plain)
-            .accessibilityIdentifier("timer-open-todos")
             Spacer()
         }
     }
