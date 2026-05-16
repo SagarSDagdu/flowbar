@@ -19,7 +19,7 @@ struct TitleBarLabel: View {
                         Text(TimerService.formatTime(timerService.elapsed))
                             .monospacedDigit()
                             .foregroundStyle(.secondary)
-                        Text(timerService.currentTodoText.truncated(to: 25))
+                        Text(timerService.currentTodoText)
                             .lineLimit(1)
                             .truncationMode(.tail)
                     }
